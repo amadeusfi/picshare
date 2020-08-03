@@ -34,7 +34,7 @@
     </form>
     <div v-if="success">
       <a
-        :href="'gallery/'+albumId"
+        :href="'/upload/images/'+albumId"
       >Your beautiful album is created. Click the link to upload the images</a>
     </div>
   </div>

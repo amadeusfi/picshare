@@ -8,7 +8,10 @@
           <th scope="col">Name</th>
           <th scope="col">Description</th>
           <th scope="col">Category</th>
+          <th scope="col">View</th>
+          <th scope="col">Upload</th>
           <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -21,6 +24,16 @@
           <td>{{album.description}}</td>
           <td>{{album.category.name}}</td>
           <td>
+            <a :href="'/albums/'+album.slug+'/'+album.id">
+              <button class="btn btn-info">View</button>
+            </a>
+          </td>
+          <td>
+            <a :href="'/upload/images/'+album.id">
+              <button class="btn btn-success">Upload</button>
+            </a>
+          </td>
+          <td>
             <button
               @click.prevent="edit(album.id)"
               type="button"
@@ -28,6 +41,9 @@
               data-toggle="modal"
               data-target="#exampleModal"
             >Edit</button>
+          </td>
+          <td>
+            <button @click.prevent="deleteRecord(album.id)" class="btn btn-danger">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -64,6 +80,36 @@ export default {
     },
     recordUpdate(response) {
       this.albums = response.data;
+    },
+    deleteRecord(id) {
+      Swal.fire({
+        title: "Are you sure?",
+        icon: "warning",
+        text: "There is no way back",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Yes",
+      }).then((result) => {
+        if (result.value) {
+          axios
+            .delete("/albums/" + id + "/delete")
+            .then((response) => {
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Album deleted",
+                text: "your changes have been saved",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              this.albums = response.data;
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
+      });
     },
   },
 };

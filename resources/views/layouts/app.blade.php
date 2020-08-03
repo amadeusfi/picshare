@@ -11,8 +11,10 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <!-- sweet alert  --
+    <!-- alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!-- images -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -20,6 +22,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+  />
+  <!-- image -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
 </head>
 <body>
     <div id="app">
@@ -40,6 +48,10 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        @if(Auth::check())
+                    <a class="navbar-brand" href="{{route('user.album',[auth()->user()->id])}}">My Album</a>
+                    <a class="navbar-brand" href="{{url('/albums')}}">My Dashboard</a>
+                        @endif
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

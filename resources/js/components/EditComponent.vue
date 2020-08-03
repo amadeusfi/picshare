@@ -9,10 +9,10 @@
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog">
+      <div class="modal-dialog animate__animated animate__bounceInUp">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title d-flex" id="exampleModalLabel">Edit your Albums</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -105,6 +105,16 @@ export default {
         .then((response) => {
           $("#exampleModal").modal("hide");
           this.$emit("recordUpdated", response);
+
+          Swal.fire({
+            title: "Album Updated",
+            showClass: {
+              popup: "animate__animated animate__fadeInUp",
+            },
+            hideClass: {
+              popup: "animate__animated animate__fadeOutUp",
+            },
+          });
         })
         .catch((error) => {
           console.log(error);

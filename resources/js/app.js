@@ -25,6 +25,9 @@ Vue.component('index', require('./components/IndexComponent.vue').default);
 
 Vue.component('edit', require('./components/EditComponent.vue').default);
 
+Vue.component('upload', require('./components/UploadComponent.vue').default);
+
+
 
 
 

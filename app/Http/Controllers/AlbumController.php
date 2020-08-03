@@ -34,7 +34,7 @@ class AlbumController extends Controller
     {
 
         $this->validate($request, [
-            'name' => 'required|min:3|max:15',
+            'name' => 'required|min:3|max:50',
             'description' => 'required|min:3|max:200',
             'category_id' => 'required',
             'image' => 'required|mimes:jpeg,jpg,png'
@@ -74,6 +74,14 @@ class AlbumController extends Controller
 
         $success =  $album->save();
         if ($success) {
+            return response()->json($this->getAlbums());
+        }
+    }
+
+    public function destroy($id)
+    {
+        $album = Album::find($id)->delete();
+        if ($album) {
             return response()->json($this->getAlbums());
         }
     }
