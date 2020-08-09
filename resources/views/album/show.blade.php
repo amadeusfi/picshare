@@ -23,7 +23,7 @@
                     <div class="card-body">
                     @foreach($albums as $album)
                 <p>
-                    @if(auth->user()->id!=$userId)
+                    @if(auth()->user()->id!=$userId)
                     <follow user-id="{{$userId}}" follows="{{$follows}}"></follow>
                     @endif
                     

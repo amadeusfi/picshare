@@ -55,4 +55,4 @@ Route::get('/user/profile/{id}', 'FrontendController@userAlbum')->name('user.alb
 //
 
 //List all album of user
-Route::post('/follow', "FollowController@followUnfollow");
+Route::post('/follow', "FollowerController@followUnfollow");
