@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Follower;
 use Illuminate\Http\Request;
+use App\User;
 
 class FollowerController extends Controller
 {
 
-    public function followUnfollow()
+    public function followUnfollow(Request $request)
     {
+        $followerId = User::find(auth()->user()->id);
+        $followingId = User::find($request->userId);
+        $followerId->following()->toggle($followingId);
+        return redirect()->back();
     }
     /**
      * Display a listing of the resource.
