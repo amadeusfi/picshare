@@ -51,7 +51,7 @@ Route::delete('/image/{id}', 'GalleryController@destroy')->middleware('auth');
 Route::get('/albums/{slug}/{id}', 'GalleryController@viewAlbum')->name('view.album');
 
 
-
+Route::get('/user/profile/{id}', 'FrontendController@userAlbum')->name('user.album');
 //
 
 //List all album of user

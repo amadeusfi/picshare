@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class FollowerController extends Controller
 {
+
+    public function followUnfollow()
+    {
+    }
     /**
      * Display a listing of the resource.
      *

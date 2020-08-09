@@ -27,6 +27,8 @@ Vue.component('edit', require('./components/EditComponent.vue').default);
 
 Vue.component('upload', require('./components/UploadComponent.vue').default);
 
+Vue.component('follow', require('./components/FollowComponent.vue').default);
+
 
 
 

@@ -19,15 +19,22 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12">
-        <div class="card-body">
-            @foreach($albums as $album)
-                <p>Created By:<a href="{{route('user.album',[$album->user_id])}}">{{$album->user->name}}</a></p>
-                <p>{{$album->name}}</p>
+            <div class="col-md-12">
+                    <div class="card-body">
+                    @foreach($albums as $album)
+                <p>
+                    @if(auth->user()->id!=$userId)
+                    <follow user-id="{{$userId}}" follows="{{$follows}}"></follow>
+                    @endif
+                    
+                    Created By:<a href="{{route('user.album',[$album->user_id])}}">{{$album->user->name}}</a>
+                    </div>
+                </p>
+                <p><h2>{{$album->name}}></h2></p>
                 <p>{{$album->description}}</p>
-            @endforeach
-        </div>
-
+                @endforeach
+            </div>
+        
         <!--Disqus-->
 
         <div id="disqus_thread"></div>
